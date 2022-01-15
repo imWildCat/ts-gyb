@@ -36,6 +36,7 @@ function run(): void {
   const languageRenderingConfigs = [
     { language: RenderingLanguage.Swift, renderingConfig: config.rendering.swift },
     { language: RenderingLanguage.Kotlin, renderingConfig: config.rendering.kotlin },
+    { language: RenderingLanguage.Go, renderingConfig: config.rendering.go },
   ];
 
   languageRenderingConfigs.forEach(({ language, renderingConfig }) => {

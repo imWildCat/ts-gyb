@@ -8,10 +8,12 @@ import { serializeModule, serializeNamedType } from '../serializers';
 import { isInterfaceType, Module } from '../types';
 import { applyDefaultCustomTags } from './utils';
 import { ValueTransformer, SwiftValueTransformer, KotlinValueTransformer } from '../renderer/value-transformer';
+import { GoValueTransformer } from '../renderer/value-transformer/GoValueTransformer';
 
 export enum RenderingLanguage {
   Swift = 'Swift',
   Kotlin = 'Kotlin',
+  Go = 'Go',
 }
 
 export class CodeGenerator {
@@ -158,6 +160,8 @@ export class CodeGenerator {
         return '.swift';
       case RenderingLanguage.Kotlin:
         return '.kt';
+      case RenderingLanguage.Go:
+        return '.go';
       default:
         throw Error('Unhandled language');
     }
@@ -194,6 +198,8 @@ export class CodeGenerator {
         return new SwiftValueTransformer(typeNameMap);
       case RenderingLanguage.Kotlin:
         return new KotlinValueTransformer(typeNameMap);
+      case RenderingLanguage.Go:
+        return new GoValueTransformer(typeNameMap);
       default:
         throw Error('Unhandled language');
     }

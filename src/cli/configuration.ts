@@ -80,6 +80,10 @@ export interface LanguageRenderingConfiguration {
    * Kotlin renderer configuration
    */
   kotlin?: RenderConfiguration;
+  /**
+   * Golang renderer configuration
+   */
+  go?: RenderConfiguration;
 }
 
 /**
